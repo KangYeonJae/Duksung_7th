@@ -1,10 +1,19 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 <div class="container">
-    <a href="{% url 'post_list' %}">뒤로</a>
+<<<<<<< HEAD
+    
     <!--<a href="{% url 'edit' pk=notice.pk %}">글 수정하기</a>-->
-    <h1>제목: {{notice.title}}</h1>
-    <p>내용:{{notice.body}}</p>
-    {{notice.update_counter}}
-    <p><a href="{% url 'download' pk=notice.pk %}">다운로드</a></p>
-    <p>등록일:{{notice.update_date}}</p>
-    <a href="{% url 'delete' pk=notice.pk %}">삭제</a>
-</div>
+    <div class="card">
+    <h5 class="card-header">{{notice.title}}</h5>
+        <div class="card-body">{{notice.body}}</p>
+            <br>
+    <p>첨부파일 : <a href="{% url 'download' pk=notice.pk %}"> {{notice.file}} </a></p>
+    <footer class="blockquote-footer">등록일 : {{notice.update_date}}</footer><br>
+    <a href="{% url 'show' %}" class="btn btn-primary">목록</a>
+    <a href="{% url 'delete' pk=notice.pk %}" class="btn btn-primary">삭제</a>
+    </div>
