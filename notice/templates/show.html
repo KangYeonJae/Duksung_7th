@@ -1,5 +1,12 @@
-<h1><a href="{% url 'post' %}"><글 작성하러 가기></a></h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<br>
+<h1>공지방</h1>
+<br>
+<button style ="margin-left: 93%" type="button" class="btn btn-outline-secondary"><a href="{% url 'post' %}">글 작성하기</a></button>
 
 <table class='table'>
     <thead>
@@ -9,8 +16,12 @@
         <th>내용</th>
         <th>등록일</th>
         <th>조회수</th>
-        
         </tr>
+    <style>
+        h1{ text-align: center;
+        background-color: rgb(203, 216, 240);
+        }
+    </style>
     </thead>
  <tbody>
      {% if total_list%}
@@ -31,10 +42,7 @@
     {% endif %}
 
  </tbody>
-
-
 </table>
-
 
 <div class="page_display">
     <!--
@@ -42,24 +50,37 @@
         1.pip install django-mathfilters
     -->
     {% load mathfilters %}
-    {% if startPageNum != 1 %}
-        <a href="?pageNum={{startPageNum|sub:1}}">이전</a>
-    {% else %}
-        <a href="javascript:;" class="muted">[이전]</a>
-    {% endif %}
 
-    {% for i in bottomPages %}
-        {% if i == pageNum %}
-            <a class="active" href="?pageNum={{i}}">{{ i}}</a>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+            {% if toPageCount > endPageNum %}
+        <a class="page-link" href="?pageNum={{startPageNum|sub:1}}" aria-label="Previous">
+               
+          <span aria-hidden="true">[이전]</span>
+        </a>
         {% else %}
-            <a href="?pageNum={{i}}">{{ i}}</a>
+        <a class="page-link" href="javascript:;" aria-label="Previous">  <span aria-hidden="true">[이전]</span></a>
         {% endif %}
+      </li>
+      {% for i in bottomPages %}
+      {% if i == pageNum %}
+      <li class="page-item"> <a class="page-link" href="?pageNum={{i}}">{{ i}}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?pageNum={{i}}">{{ i}}</a></li>
+      {% endif %}
 
-    {% endfor %}
-
-    {% if toPageCount > endPageNum %}
-        <a href="?pageNum={{endPageNum| add:1}}">[다음]</a>
-    {% else %}
-        <a href="javascript:;" class="muted">[다음]</a>
-    {% endif %}
+  {% endfor %}
+     
+      
+        {% if toPageCount > endPageNum %}
+        <li class="page-item"> <a class="page-link" href="?pageNum={{endPageNum| add:1}}">
+          <span aria-hidden="true">[다음]</span></a></li>
+        </a>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="javascript:;" class="muted">
+                <span aria-hidden="true">[다음]</span></a></li>
+        {% endif %}
+    </ul>
+  </nav>
 </div>

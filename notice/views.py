@@ -50,7 +50,7 @@ def delete(request,pk):
     return redirect('post_list')
 
 def post_list(request):
-        PAGE_ROW_COUNT=5
+        PAGE_ROW_COUNT=10
         PAGE_DISPLAY_COUNT=5
 
         total_list=Notice.objects.all().order_by('-id')
