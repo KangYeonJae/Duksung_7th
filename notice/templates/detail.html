@@ -5,8 +5,6 @@
 
 
 <div class="container">
-<<<<<<< HEAD
-    
     <!--<a href="{% url 'edit' pk=notice.pk %}">글 수정하기</a>-->
     <div class="card">
     <h5 class="card-header">{{notice.title}}</h5>
@@ -14,6 +12,6 @@
             <br>
     <p>첨부파일 : <a href="{% url 'download' pk=notice.pk %}"> {{notice.file}} </a></p>
     <footer class="blockquote-footer">등록일 : {{notice.update_date}}</footer><br>
-    <a href="{% url 'show' %}" class="btn btn-primary">목록</a>
+    <a href="{% url 'post_list' %}" class="btn btn-primary">목록</a>
     <a href="{% url 'delete' pk=notice.pk %}" class="btn btn-primary">삭제</a>
     </div>
